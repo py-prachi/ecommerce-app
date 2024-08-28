@@ -1,0 +1,17 @@
+<div class="cart">
+    <button  mat-button [routerLink]="['/cart']" >View Cart</button>
+</div>
+<div *ngIf="product" class="product-list"> 
+    <mat-card class="product-card">
+        <mat-card-title class="card-title">{{product.name}}</mat-card-title>
+        <img mat-card-image [src]="product.imageUrl" alt="{{product.name}}">
+        <mat-card-content>{{product.description}}</mat-card-content>
+        <mat-card-content>Price: {{product.price | currency }}</mat-card-content>
+        <mat-card-actions>
+            <button mat-button (click)="addToCart(product)">Add to Cart</button>
+        </mat-card-actions>
+        
+    </mat-card>  
+</div>
+
+
