@@ -4,7 +4,7 @@ import { Product } from '../model/productInterface';
 import { select, Store } from '@ngrx/store';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { selectCartItemCount, selectCartItems } from '../store/cart.selectors';
+import { selectCartItemCount, selectCartItems} from '../store/cart.selectors';
 
 @Component({
   selector: 'app-cart',
@@ -16,6 +16,7 @@ import { selectCartItemCount, selectCartItems } from '../store/cart.selectors';
 export class CartComponent implements OnInit{
   cartItems$: Observable<Product[]>;
   cartItemCount$: Observable<number>;
+  
   totalCartValue:number = 0;
 
   constructor(private store: Store) {

@@ -1,19 +1,20 @@
 <div class="cart-summary">
-    <h2>My Cart</h2>
+    <h3>My Cart</h3>
     <div *ngIf="cartItemCount$ | async as count; else emptyCart">
-      <h3>Total Items: {{ count }}</h3>
+      <h4>Total Items: {{ count }}</h4>
     </div>
+    
+    <div class="cart-total">
+      <h3>Total Cart Value: {{ totalCartValue | currency }}</h3>
+  </div>
     <div class="cart-list">
       <div *ngIf="cartItems$ | async as cartItems; else emptyCart">
         <div *ngFor="let product of cartItems" class="cart-item">
           <img class="product-icon" [src]="product.imageUrl" alt="{{ product.name }}">
           <div class="product-info">
-            <h4 class="product-name">{{ product.name }}</h4>
+            <h5 class="product-name">{{ product.name }}</h5>
             <p class="product-price">{{ product.price | currency }}</p>
           </div>
-        </div>
-        <div class="cart-total">
-            <h3>Total Cart Value: {{ totalCartValue | currency }}</h3>
         </div>
       </div>
     </div>
