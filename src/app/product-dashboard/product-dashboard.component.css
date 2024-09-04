@@ -1,0 +1,55 @@
+.product-dashboard {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f4f4f4;
+}
+
+button.mat-icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+button.mat-icon-button-delete {
+    color: black; /* Red for delete */
+}
+
+button.mat-icon-button-delete:hover {
+    color: #dc3545; /* Change color on hover */
+}
+
+.pagination-controls {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .pagination-controls button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .pagination-controls button:hover {
+    background-color: #0056b3;
+  }
+  
+  .pagination-controls span {
+    margin: 0 10px;
+    font-weight: bold;
+  }

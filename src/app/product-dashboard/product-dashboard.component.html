@@ -1,0 +1,34 @@
+
+<div class="product-dashboard">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of displayedProducts">
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price | currency}}</td>
+                <td>
+                <button mat-icon-button class="mat-icon-button-delete" (click)="onDelete(product)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="pagination-controls">
+        <button (click)="goToFirstPage()" class="first-page">First</button>
+        <button (click)="goToPreviousPage()" class="previous-page">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="goToNextPage()" class="next-page">Next</button>
+        <button (click)="goToLastPage()" class="last-page">Last</button>
+      </div>
+</div>
