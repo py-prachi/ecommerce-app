@@ -30,6 +30,17 @@ button.mat-icon-button-delete:hover {
     color: #dc3545; /* Change color on hover */
 }
 
+.search-bar{
+    margin-bottom: 16px;
+   
+}
+
+.search-bar input{
+    width: 100;
+    padding: 8px;
+    font-size: 16px
+}
+
 .pagination-controls {
     margin-top: 10px;
     text-align: center;
