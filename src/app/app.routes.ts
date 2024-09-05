@@ -8,7 +8,6 @@ import { ProductDashboardComponent } from './product-dashboard/product-dashboard
 export const routes: Routes = [
     {path:'', component:ProductDashboardComponent},
     {path:'product-list-display', component:ProductListComponent},
-    {path:'product-details/:id', component:ProductDetailsComponent},
+    {path:'product-details/:id', loadChildren:() => import('./product-details/product-details-routing.module').then(m => m.ProductDetailsRoutingModule)},
     {path:'cart', component:CartComponent}
-
 ];

@@ -5,17 +5,17 @@ import { MatIconModule } from '@angular/material/icon'
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from '../directives/highlight.directive';
+import { DiscountPipe } from "../pipe/discount.pipe";
 
 
 @Component({
   selector: 'app-product-dashboard',
   standalone: true,
-  imports: [CommonModule, MatIconModule, FormsModule, HighlightDirective],
+  imports: [CommonModule, MatIconModule, FormsModule, HighlightDirective, DiscountPipe],
   templateUrl: './product-dashboard.component.html',
   styleUrl: './product-dashboard.component.css'
 })
 export class ProductDashboardComponent implements OnInit{
-
   
   products: Product[]=[];
   displayedProducts: Product [] = [];
@@ -24,6 +24,8 @@ export class ProductDashboardComponent implements OnInit{
   pageSize = 10;
   totalPages = 0;
   searchQuery = '';
+  maxPrice: number | null = null;
+  minPrice: number | null = null;
 
   constructor(private productService:ProductService){}
 
@@ -34,29 +36,44 @@ export class ProductDashboardComponent implements OnInit{
     this.updateDisplayedProducts();
   }
 
+  onFilter() {
+   this.applyFilter();
+    
+    }
+
   onSearch(): void {
+    this.applyFilter();
+    }
+  
+    applyFilter(): void {
+
+    this.filteredProducts = [...this.products]
+
     const query = this.searchQuery.trim().toLowerCase();
-    console.log("triggering search...",query)
+    
     if(query){
       this.filteredProducts = this.products.filter(product =>
         product.name.toLowerCase().includes(query) 
       );
-     console.log("The list: ",this.filteredProducts) 
     
-    }else{
-      this.filteredProducts = [...this.products]
     }
-    
-    
-  
+    if(this.minPrice && this.maxPrice){
+    this.filteredProducts = this.products.filter(product =>
+      (this.minPrice === null || product.price >= this.minPrice) && 
+      (this.maxPrice === null || product.price <= this.maxPrice)
+      )
+    } 
+
+
     this.currentPage = 1;
     this.totalPages = Math.ceil(this.filteredProducts.length / this.pageSize)
     this.updateDisplayedProducts();
+
     }
   
   onDelete(product:Product){
     this.products = this.products.filter(p=>p.id !== product.id)
-    this.onSearch();
+    this.applyFilter();
 
   }
 
