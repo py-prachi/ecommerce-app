@@ -4,11 +4,13 @@ import { ProductService } from '../product.service';
 import { MatIconModule } from '@angular/material/icon'
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HighlightDirective } from '../directives/highlight.directive';
+
 
 @Component({
   selector: 'app-product-dashboard',
   standalone: true,
-  imports: [CommonModule, MatIconModule, FormsModule],
+  imports: [CommonModule, MatIconModule, FormsModule, HighlightDirective],
   templateUrl: './product-dashboard.component.html',
   styleUrl: './product-dashboard.component.css'
 })

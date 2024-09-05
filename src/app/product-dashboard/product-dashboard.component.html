@@ -15,11 +15,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let product of displayedProducts">
+            <tr *ngFor="let product of displayedProducts" [appHighlight]="product.price < 15 ? 'lightblue': null">
+            
+            <!-- <tr *ngFor="let product of displayedProducts" [appHighlight]="'lightblue'"></tr> -->
                 <td>{{product.id}}</td>
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>
-                <td>{{product.price | currency}}</td>
+                <td >{{product.price | currency}}</td>
                 <td>
                 <button mat-icon-button class="mat-icon-button-delete" (click)="onDelete(product)">
                     <mat-icon>delete</mat-icon>
