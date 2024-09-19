@@ -17,7 +17,11 @@ import { addToCart } from '../store/cart.actions';
 export class ProductDetailsComponent implements OnInit {
 
   product!: Product | undefined;
-  constructor(private route: ActivatedRoute, private productService: ProductService, private store: Store) {}
+  constructor(
+    private route: ActivatedRoute, 
+    private productService: ProductService, 
+    private store: Store
+  ) {}
 
   ngOnInit(): void {
    const productId = Number(this.route.snapshot.paramMap.get('id'));
