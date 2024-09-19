@@ -5,6 +5,8 @@ import { ProductService } from '../product.service';
 import { of } from 'rxjs';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Product } from '../model/productInterface';
+import { provideRouter } from '@angular/router';
+import { provideMockStore } from '@ngrx/store/testing';
 
 
 describe('ProductDetailsComponent', () => {
@@ -24,7 +26,9 @@ describe('ProductDetailsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ProductDetailsComponent],
       providers:[
-        {provide:ProductService,useValue: productServiceSpy}
+        provideMockStore(),
+        {provide:ProductService,useValue: productServiceSpy},
+        provideRouter([])
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })
